@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoGraph
+import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.ShowChart
@@ -25,6 +26,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.rhythm.app.ui.screens.HomeScreen
 import com.rhythm.app.ui.screens.ModelScreen
+import com.rhythm.app.ui.screens.OptimemScreen
 import com.rhythm.app.ui.screens.RhythmScreen
 import com.rhythm.app.ui.screens.SettingsScreen
 
@@ -32,10 +34,11 @@ sealed class Dest(val route: String, val label: String, val icon: androidx.compo
     data object Home : Dest("home", "Home", Icons.Filled.Home)
     data object Rhythm : Dest("rhythm", "Rhythm", Icons.Filled.ShowChart)
     data object Model : Dest("model", "Model", Icons.Filled.AutoGraph)
+    data object Optimem : Dest("optimem", "Optimem", Icons.Filled.Bolt)
     data object Settings : Dest("settings", "Settings", Icons.Filled.Settings)
 }
 
-private val screens = listOf(Dest.Home, Dest.Rhythm, Dest.Model, Dest.Settings)
+private val screens = listOf(Dest.Home, Dest.Rhythm, Dest.Model, Dest.Optimem, Dest.Settings)
 
 @Composable
 fun NavGraph() {
@@ -73,6 +76,7 @@ fun NavGraph() {
             composable(Dest.Home.route) { HomeScreen(vm) }
             composable(Dest.Rhythm.route) { RhythmScreen(vm) }
             composable(Dest.Model.route) { ModelScreen(vm) }
+            composable(Dest.Optimem.route) { OptimemScreen(vm) }
             composable(Dest.Settings.route) { SettingsScreen(vm) }
         }
     }
